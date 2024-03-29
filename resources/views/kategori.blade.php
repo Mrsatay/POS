@@ -1,3 +1,13 @@
+
+@extends('layouts.app')
+
+{{-- Customize layout sections --}}
+
+@section('subtitle', 'Kategori')
+@section('content_header_title', 'Home')
+@section('content_header_subtitle', 'Kategori')
+
+@section('content_body')
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,3 +31,9 @@
         </table>
     </body>
 </html>
+@endsection
+
+@push('css')
+    {{-- Add here extra stylesheets --}}
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+@endpush
