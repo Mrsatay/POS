@@ -7,13 +7,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class KategoriModel extends Model
 {
-    protected $table = 'm_kategori';
-    protected $primaryKey = 'kategori_id'; // perubahan pada variabel primaryKey
 
-    protected $fillable = ['kategori_kode', 'kategori_nama'];
+    protected $table = 'm_kategori'; 
+    protected $primaryKey = 'kategori_id';
 
-    public function barang(): HasMany // perubahan pada deklarasi relasi HasMany
+    protected $fillable = [
+        'kategori_kode',
+        'kategori_nama'
+    ];
+
+    public function barang(): HasMany
     {
-        return $this->hasMany(BarangModel::class, 'kategori_id', 'kategori_id');
+        return $this->HasMany(BarangModel::class, 'barang_id', 'barang_id');
     }
 }

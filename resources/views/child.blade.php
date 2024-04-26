@@ -1,6 +1,5 @@
-{{-- Disimpan di resources/views/child.blade.php --}}
 @extends('layouts.app')
-@section('title','profil')
+@section('title', 'Profil')
 @section('sidebar')
     @parent
     <p>Sidebar halaman Profil.</p>
