@@ -40,14 +40,14 @@
         <a href="{{ url('/category') }}" class="nav-link {{ ($activeMenu == 
 'category')?'active' : '' }} ">
           <i class="nav-icon far fa-bookmark"></i>
-          <p>Category Barang</p>
+          <p>Kategori Barang</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ url('/item') }}" class="nav-link {{  ($activeMenu == 'item')? 
 'active' : '' }} ">
           <i class="nav-icon far fa-list-alt"></i>
-          <p>Goods Data</p>
+          <p>Data Barang</p>
         </a>
       </li>
       <li class="nav-header">Data Transaksi</li>
@@ -55,14 +55,14 @@
         <a href="{{ url('/stok') }}" class="nav-link {{ ($activeMenu == 'stok')? 
 'active' : '' }} ">
           <i class="nav-icon fas fa-cubes"></i>
-          <p>Stock of Goods</p>
+          <p>Stok Barang</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ url('/item') }}" class="nav-link {{ ($activeMenu == 
 'sales')? 'active' : '' }} ">
           <i class="nav-icon fas fa-cash-register"></i>
-          <p>Sales Transaction</p>
+          <p>Transaksi Penjualan</p>
         </a>
       </li>
     </ul>
