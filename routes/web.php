@@ -13,6 +13,9 @@ use App\Http\Controllers\POSController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ManagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,3 +115,4 @@ Route::group(['middleware'=> ['auth']], function(){
         Route::resource('manager', ManagerController::class);
     });
 });
+
