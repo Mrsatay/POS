@@ -21,7 +21,7 @@ class AuthController extends Controller
                 return redirect()->intended('manager');
             }
         }
-        return view('auth.login');
+        return view('auth/login');
     }
 
     public function proses_login(Request $request)
@@ -43,14 +43,14 @@ class AuthController extends Controller
             }
             return redirect()->intended('/');
         }
-        return redirect('auth.login')
+        return redirect('login')
             ->withInput()
             ->withErrors(['login_gagal' => 'Pastikan kembali username dan password yang dimasukan sudah benar']);
     }
 
     public function register()
     {
-        return view('auth.register');
+        return view('auth/register');
     }
 
     public function proses_register(Request $request)
@@ -62,7 +62,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('auth.register')
+            return redirect('/register')
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -70,6 +70,7 @@ class AuthController extends Controller
         $request['password'] = Hash::make($request['password']);
 
         UserModel::create($request->all());
+        
 
         return redirect()->route('login');
     }
@@ -79,6 +80,6 @@ class AuthController extends Controller
         $request->session()->flush();
 
         Auth::logout();
-        return redirect('auth.login');
+        return redirect('login');
     }
 }

@@ -40,7 +40,7 @@
 
             <div class="input-group-append">
                 <div class="input-group-text">
-                    <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                    <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', 'btn-flat btn-primary') }}"></span>
                 </div>
             </div>
 
