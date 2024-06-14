@@ -8,17 +8,8 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class UserModel extends Model implements JWTSubject
+class UserModel extends Model implements AuthenticatableContract, JWTSubject
 {
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
     use HasFactory, Authenticatable;
 
     protected $table = 'm_user';
@@ -28,8 +19,18 @@ class UserModel extends Model implements JWTSubject
         'level_id',
         'username',
         'nama',
-        'password'
+        'password',
     ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     public function level() {
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');

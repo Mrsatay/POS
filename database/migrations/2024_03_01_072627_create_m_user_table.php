@@ -19,10 +19,6 @@ return new class extends Migration
             $table->string('password');
             $table->timestamps();
 
-            
-            
-
-
         });
     }
 

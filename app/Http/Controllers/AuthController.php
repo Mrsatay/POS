@@ -17,11 +17,14 @@ class AuthController extends Controller
         if ($user) {
             if ($user->level_id == '1') {
                 return redirect()->intended('admin');
-            } else if ($user->level_id == '2') {
+            } elseif ($user->level_id == '2') {
                 return redirect()->intended('manager');
+            } else {
+                return redirect()->intended('/');
             }
         }
-        return view('auth/login');
+
+        return view('auth.login');
     }
 
     public function proses_login(Request $request)
@@ -31,26 +34,28 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $credential = $request->only('username', 'password');
-        if (Auth::attempt($credential)) {
+        $credentials = $request->only('username', 'password');
 
+        if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
             if ($user->level_id == '1') {
                 return redirect()->intended('admin');
-            } else if ($user->level_id == '2') {
+            } elseif ($user->level_id == '2') {
                 return redirect()->intended('manager');
+            } else {
+                return redirect()->intended('/');
             }
-            return redirect()->intended('/');
         }
+
         return redirect('login')
             ->withInput()
-            ->withErrors(['login_gagal' => 'Pastikan kembali username dan password yang dimasukan sudah benar']);
+            ->withErrors(['login_gagal' => 'Pastikan kembali username dan password yang dimasukkan sudah benar']);
     }
 
     public function register()
     {
-        return view('auth/register');
+        return view('auth.register');
     }
 
     public function proses_register(Request $request)
@@ -66,11 +71,11 @@ class AuthController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
         $request['level_id'] = '2';
         $request['password'] = Hash::make($request['password']);
 
         UserModel::create($request->all());
-        
 
         return redirect()->route('login');
     }

@@ -30,20 +30,17 @@
         </button>
     </div>
     @enderror
-    <form action="{{url('proses_login')}}" method="post">
+    <form action="{{ url('proses_login') }}" method="post">
         @csrf
 
-        {{-- Email field --}}
         <div class="input-group mb-3">
             <input type="text" name="username" class="form-control @error('username') is-invalid @enderror"
-            value="{{ old('username') }}" placeholder="username" autofocus>
-
+                   value="{{ old('username') }}" placeholder="Username" autofocus>
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', 'btn-flat btn-primary') }}"></span>
                 </div>
             </div>
-
             @error('username')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -51,17 +48,14 @@
             @enderror
         </div>
 
-        {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-            placeholder="{{ __('adminlte::adminlte.password') }}">
-
+                   placeholder="{{ __('adminlte::adminlte.password') }}">
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
                 </div>
             </div>
-
             @error('password')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -69,34 +63,29 @@
             @enderror
         </div>
 
-        {{-- Login field --}}
         <div class="row">
             <div class="col-7">
                 <div class="icheck-primary" title="{{ __('adminlte::adminlte.remember_me_hint') }}">
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
                     <label for="remember">
                         {{ __('adminlte::adminlte.remember_me') }}
                     </label>
                 </div>
             </div>
-
             <div class="col-5">
                 <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
-
                     <span class="fas fa-sign-in-alt"></span>
                     {{ __('adminlte::adminlte.sign_in') }}
                 </button>
             </div>
         </div>
-
     </form>
 @stop
 
 @section('auth_footer')
     @if($register_url)
         <p class="my-0">
-            <a href="{{ route('register') }}">
+            <a href="{{ $register_url }}">
                 {{ __('adminlte::adminlte.register_a_new_membership') }}
             </a>
         </p>

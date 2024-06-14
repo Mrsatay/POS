@@ -8,6 +8,6 @@ class ManagerController extends Controller
 {
     public function index()
     {
-        return view('manager');
+        return view('auth/manager');
     }
 }
